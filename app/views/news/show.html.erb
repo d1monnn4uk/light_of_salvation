@@ -1,0 +1,19 @@
+<% provide(:title, @news.title) %>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+    <h1>
+      <%= @news.title %>
+    </h1>
+    <p>
+      <%= @news.content %>
+    </p>
+    <h6> Категория: <%= @news.category.name %> </h6>
+    <h6> Data: <%= @news.updated_at %> </h6>
+    <% if current_user.admin? && !current_user?(@user) %>
+      <%= link_to "edit", edit_news_path(@news) %>
+    | <%= link_to "delete", @news, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+    <% end %>
+  </div>
+</div>

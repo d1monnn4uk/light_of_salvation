@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @news = New.last(5).reverse
   end
 
   def news
@@ -17,9 +18,15 @@ class StaticPagesController < ApplicationController
   def poetry
   end
 
-  def about_us
+  def contact
   end
 
-  def contact
+  def goals  
+  end
+
+  def worship
+  end
+
+  def ministers
   end
 end

@@ -1,19 +1,50 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
+<header>
+  <div class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container">
-    <%= link_to image_tag("LOS-ENG.png", alt: "Light of salvation"), 'http://www.svitlo-spas.narod.ru/', id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-          <li><%= link_to "News",    news_path %></li>
-          <li><%= link_to "History", history_path %></li>
-          <li><%= link_to "Foto",    foto_path %></li>
-          <li><%= link_to "Video",   video_path %></li>
-          <li><%= link_to "Poetry",  poetry_path %></li>
-          <li><%= link_to "About",   about_path %></li>
-          <li><%= link_to "Contact", contact_path %></li>
+      <div class="navbar-header">
+        <%= link_to "Світло спасіння", root_path, id: "logo" %>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to "Главная",    root_path %></li>
+          <li><%= link_to "Новости",    news_index_path %></li>
+          <li><%= link_to "История", history_path %></li>
+          <li><%= link_to "Фото",    foto_path %></li>
+          <li><%= link_to "Видео",   video_path %></li>
+          <li><%= link_to "Поэзия",  poetry_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> О нас <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Наша цель",  goals_path %></li>
+              <li><%= link_to "Вероучение",  worship_path %></li>
+              <li><%= link_to "Служители",  ministers_path %></li>
+            </ul>
+          </li>
+          <li><%= link_to "Контакты", contact_path %></li>
+          <% if signed_in? %>
+            <li><%= link_to "Users", users_path %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Edit", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "News", new_news_path %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: :delete %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
         </ul>
-      </nav>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
 </header>

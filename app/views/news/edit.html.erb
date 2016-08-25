@@ -1,0 +1,19 @@
+<% provide(:title, "Edit news") %>
+<h1>Измените новость</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for (@news) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.label :category %>
+      <%= select("new", "category_id", @category.collect {|c| [ c.name, c.id ] }) %>
+
+      <%= f.submit "Изменить новость", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

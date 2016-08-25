@@ -1,0 +1,22 @@
+<% provide(:title, 'All news') %>
+<div class="row">
+  <div class="nav col-md-3">
+    <li><%= link_to "Наши новости",    ournews_path %></li>
+    <li><%= link_to "Новости Украины", uanews_path %></li>
+    <li><%= link_to "Мировые новости", worldnews_path %></li>
+  </div>
+  
+  <div class="col-md-9">
+    <h1>Новости</h1>
+    <%= will_paginate %>
+    <ul class="users">
+      <% @news.each do |news| %>     
+          <li>
+            <h2 class="text-left"><%= link_to news.title, news %></h2>
+            <h5><%= news.category.name %></h5>
+          </li>
+      <% end %>
+    </ul>
+    <%= will_paginate %>
+  </div>
+</div>
